@@ -7,7 +7,7 @@ This is a demo login form for Auth0 when MFA is forced and doesn't rely on [Univ
 1. Enable "SMS" and "One-time Password" factors and enable "Always require Multi-factor Authentication" switch [docs](https://auth0.com/docs/multifactor-authentication#1-enable-the-factors-you-require)
 1. Create a new SPA [docs](https://auth0.com/docs/dashboard/guides/applications/register-app-spa)
 1. Go yo your SPA setting and add "http://localhost:3000" (don't add the slash at the back) to "Allowed Callback URLs", "Allowed Web Origins", "Allowed Logout URLs", "Allowed Origins (CORS)"
-1. Go to "Advanced Settings" of the SPA and enable "MFA" grant type
+1. Go to "Advanced Settings" of the SPA and enable "MFA" and "Password" grant types
 1. Create a new [API](https://auth0.com/docs/apis)
 1. Copy `config.json.example` file to `config.json` in the repo's dir and put your Auth0 domain, SPA client id and audience (API's identifier) in there
 1. Run `npm install`
