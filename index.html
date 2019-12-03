@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script src="/main.js"></script>
+    <script src="/node_modules/qrcode/build/qrcode.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+</head>
+
+<body>
+    <h2>Auth0 MFA example.</h2>
+    <div id="login-block">
+        <input id="ipt-username" placeholder="login"></input><br />
+        <input id="ipt-password" placeholder="password"></input><br />
+        <button id="btn-login" onclick="login()">Log in</button>
+    </div>
+
+    <div id="mfa-enroll-block" class="hidden">
+        You have no MFA devices. Please configure one. </br>
+        <button id="btn-add-mfa-otp">Add OTP device</button><br />
+        <input id="ipt-mfa-phone" placeholder="phone number"></input> <button id="btn-add-mfa-sms">Add SMS
+            device</button>
+    </div>
+
+    <div id="mfa-verify-block" class="hidden">
+        Please verify your new MFA device. </br>
+        <input disabled="true" id="verify-mfa-otp-secret" size="45" class="hidden"></input> </br>
+        <canvas id="verify-mfa-otp-qr" class="hidden"></canvas> </br>
+        Recovery code: <input disabled="true" id="verify-mfa-recovery-code" size="45" disabled="true">
+        <input id="ipt-mfa-verify-code" placeholder="code"></input> <button id="btn-verify-mfa">Verify</button> </br>
+    </div>
+
+    <div id="mfa-choose-block" class="hidden">
+        Please choose an MFA device for authentication. </br>
+        <button id="btn-choose-mfa-otp" class="hidden">OTP</button>
+        <button id="btn-choose-mfa-sms" class="hidden">SMS</button>
+        <button id="btn-choose-mfa-recovery-code" class="hidden">Recovery code</button>
+    </div>
+
+    <div id="mfa-submit-block" class="hidden">
+        Please submit an MFA code. </br>
+        <input id="ipt-submit-mfa-code" placeholder="code"></input>
+        <button id="btn-submit-mfa">Submit</button>
+    </div>
+
+    <div id="mfa-recovery-code-confirm" class="hidden">
+        Please confirm that you saved the new recovery code. </br>
+        <input disabled="true" id="submit-mfa-recovery-code" size="45">
+        <button id="btn-submit-mfa-recovery-code-confirm">Confirm</button>
+    </div>
+
+    <div id="logout-block" class="hidden">
+        <button id="btn-logout" onclick="logout()">Log out</button>
+    </div>
+
+    <div class="hidden" id="gated-block">
+        <p>
+            You're seeing this content because you're currently
+            <strong>logged in</strong>.
+        </p>
+        <label>
+            <b>Access token:</b>
+            <pre id="access-token"></pre>
+        </label>
+
+        <label>
+            <b>User profile:</b>
+            <pre id="user-profile"></pre>
+        </label>
+    </div>
+</body>
+
+</html>
